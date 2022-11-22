@@ -14,4 +14,4 @@ def translate(w):
 
 word = input("Enter word: ")
 
-print(translate(word))
+print(translate(word))#testing
