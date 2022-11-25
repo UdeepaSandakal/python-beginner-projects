@@ -1,8 +1,8 @@
-import tkinter
+from tkinter import*
 import random
 
-GAME_WIDTH = 700
-GAME_HEIGHT = 700
+GAME_WIDTH = 500
+GAME_HEIGHT = 500
 SPEED = 50
 SPACE_SIZE = 50
 BODY_PARTS = 3
@@ -28,3 +28,19 @@ def check_direction():
 
 def game_over():
     pass
+
+window = Tk()
+window.title("keeSnake")
+window.resizable(False, False)
+
+score = 0
+direction = 'down'
+
+lable = Label(window, text="Score:{}".format(score), font=('consolas', 40))
+lable.pack()
+
+canvas = Canvas(window, bg=BACKGROUND_COLOR, height=GAME_HEIGHT, width=GAME_WIDTH)
+canvas.pack()
+
+window.mainloop()
+
