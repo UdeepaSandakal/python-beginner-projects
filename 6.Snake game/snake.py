@@ -3,7 +3,7 @@ import random
 
 GAME_WIDTH = 500
 GAME_HEIGHT = 500
-SPEED = 50
+SPEED = 70
 SPACE_SIZE = 30
 BODY_PARTS = 3
 SNAKE_COLOR = "#00FF00"
@@ -55,14 +55,18 @@ def next_turn(snake, food):
         label.config(text="Score:{}".format(score))
         canvas.delete("food")
         food = Food()
-        
+
     else:
     #deleting the last parts of the snake
         del snake.coordinate[-1]
         canvas.delete(snake.squares[-1])
         del snake.squares[-1]
 
-    window.after(SPEED, next_turn, snake, food)
+    if check_collisions(snake):
+        game_over()
+    
+    else:
+        window.after(SPEED, next_turn, snake, food)
 
 def change_direction(new_direction):
     global direction        #old direction
@@ -83,8 +87,21 @@ def change_direction(new_direction):
         if direction != 'up':
             direction = new_direction
 
-def check_direction():
-    pass
+def check_collisions(snake):
+    x, y = snake.coordinate[0]
+
+    #At the border game will over
+    if x < 0 or x >= GAME_WIDTH:
+        return True
+    elif y < 0 or y >= GAME_HEIGHT:
+        return True
+
+    #At the snake body parts touch,game over
+    for body_part in snake.coordinate[1:]:
+        if x == body_part[0] and y == body_part[1]:
+            print("GAME OVER")
+            return True
+    return False            #There are no collisions
 
 def game_over():
     pass
