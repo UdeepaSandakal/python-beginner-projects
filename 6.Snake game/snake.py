@@ -49,10 +49,18 @@ def next_turn(snake, food):
 
     snake.squares.insert(0, square)
 
+    if x == food.coordinate[0] and y == food.coordinate[1]:
+        global score
+        score += 1
+        label.config(text="Score:{}".format(score))
+        canvas.delete("food")
+        food = Food()
+        
+    else:
     #deleting the last parts of the snake
-    del snake.coordinate[-1]
-    canvas.delete(snake.squares[-1])
-    del snake.squares[-1]
+        del snake.coordinate[-1]
+        canvas.delete(snake.squares[-1])
+        del snake.squares[-1]
 
     window.after(SPEED, next_turn, snake, food)
 
@@ -88,8 +96,8 @@ window.resizable(False, False)
 score = 0
 direction = 'down'
 
-lable = Label(window, text="Score:{}".format(score), font=('consolas', 40))
-lable.pack()
+label = Label(window, text="Score:{}".format(score), font=('consolas', 40))
+label.pack()
 
 canvas = Canvas(window, bg=BACKGROUND_COLOR, height=GAME_HEIGHT, width=GAME_WIDTH)
 canvas.pack()
