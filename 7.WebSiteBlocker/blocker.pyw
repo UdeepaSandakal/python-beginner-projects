@@ -30,3 +30,4 @@ while True:
 
     #if you want to run this script everytime when you log in to your machine
     #then use task sheduler to to that
+    #also need to save the script with " .pyw  "extention
