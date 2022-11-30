@@ -19,6 +19,6 @@
 # localhost name resolution is handled within DNS itself.
 #	127.0.0.1       localhost
 #	::1             localhost
-www.pornhub.com
-www.xnxx.com
-www.pornhd3x.tv
+127.0.0.1 www.pornhub.com
+127.0.0.1 www.xnxx.com
+127.0.0.1 www.pornhd3x.tv
