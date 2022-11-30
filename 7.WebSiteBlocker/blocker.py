@@ -16,7 +16,14 @@ while True:
                 if website in content:
                     pass
                 else:
-                    file.write(website+"\n")
+                    file.write(redirect+" "+website+"\n")
     else:
+        with open(hosts_temp,'r+') as file:
+            content = file.readlines()
+            file.seek(0)                                                        #make space after the writing the whole script again
+            for line in content:
+                if not any(website in line for website in website_list):        #comparing line array values and website array,if there is code in website on line,ignore and rewrite the other things 
+                    file.write(line)
+                file.truncate()                                                 #delete averything
         print("Fun hours...")
     time.sleep(5)
