@@ -39,6 +39,9 @@ def add_command():
 def delete_command():
     backend.delete(selected_tuple[0])
 
+def update_command():
+    backend.update(selected_tuple[0],title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
+
 
 window = Tk()
 
@@ -101,7 +104,7 @@ b4.grid(row=5, column=3)
 b5 = Button(window, text="Delete", width=12, command=delete_command)
 b5.grid(row=6, column=3)
 
-b5 = Button(window, text="Close", width=12, command=close_command)
+b5 = Button(window, text="Close", width=12, command=window.destroy)
 b5.grid(row=7, column=3)
 
 window.mainloop()
