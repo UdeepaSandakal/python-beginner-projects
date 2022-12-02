@@ -45,3 +45,5 @@ def update(id,title, author, year, isbn):
     conn.close()
 
 connect()
+
+print(view())

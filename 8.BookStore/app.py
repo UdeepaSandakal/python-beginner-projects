@@ -2,9 +2,26 @@ from tkinter import *
 import backend
 
 
+def get_selected_row(event):        #event parameter hold info about type of the event
+    global selected_tuple
+    index = list1.curselection()[0]
+    selected_tuple = list1.get(index)
+
+    #after selecting a value fill the textboxes
+    e1.delete(0,END)
+    e1.insert(END,selected_tuple[1])
+
+    e2.delete(0,END)
+    e2.insert(END,selected_tuple[1])
+
+    e3.delete(0,END)
+    e3.insert(END,selected_tuple[1])
+
+    e4.delete(0,END)
+    e4.insert(END,selected_tuple[1])
 
 
-def view_command():
+def view_command(): 
     list1.delete(0,END)
     for row in backend.view():
         list1.insert(END,row)
@@ -18,6 +35,10 @@ def add_command():
     backend.insert(title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
     list1.delete(0,END)
     list1.insert(END,(title_text.get(),author_text.get(),year_text.get(),isbn_text.get()))
+
+def delete_command():
+    backend.delete(selected_tuple[0])
+
 
 window = Tk()
 
