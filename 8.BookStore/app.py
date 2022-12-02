@@ -12,13 +12,13 @@ def get_selected_row(event):        #event parameter hold info about type of the
     e1.insert(END,selected_tuple[1])
 
     e2.delete(0,END)
-    e2.insert(END,selected_tuple[1])
+    e2.insert(END,selected_tuple[2])
 
     e3.delete(0,END)
-    e3.insert(END,selected_tuple[1])
+    e3.insert(END,selected_tuple[3])
 
     e4.delete(0,END)
-    e4.insert(END,selected_tuple[1])
+    e4.insert(END,selected_tuple[4])
 
 
 def view_command(): 
@@ -44,6 +44,7 @@ def update_command():
 
 
 window = Tk()
+window.wm_title("Book Store")
 
 #labels
 l1 = Label(window, text="Title")
